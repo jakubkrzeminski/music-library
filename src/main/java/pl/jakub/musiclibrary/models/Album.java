@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class Album {
     private long id;
     private Artist artist;
+    private String name;
     private int numberOfSongs;
-    private Genre genre;
 }

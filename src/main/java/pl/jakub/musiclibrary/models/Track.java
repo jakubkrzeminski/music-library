@@ -5,7 +5,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Song {
+public class Track {
     private long id;
     private Artist artist;
     private Album album;
