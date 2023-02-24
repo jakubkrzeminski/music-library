@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Artist {
     private long id;
     private String name;
-    private String place_of_birth;
-    private LocalDate date_of_birth;
-    private LocalDate date_of_death;
+    private String placeOfBirth;
+    private LocalDate dateOfBirth;
+    private LocalDate dateOfDeath;
 }
