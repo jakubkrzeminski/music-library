@@ -26,16 +26,15 @@ public class ArtistRepository {
                 BeanPropertyRowMapper.newInstance(Artist.class), id);
     }
 
-    public int add(List<Artist> Artists) {
-        Artists.forEach(Artist -> jdbcTemplate.update("INSERT INTO artist(name, place_of_birth, date_of_birth, date_of_death) VALUES(?, ?, ?, ?);",
-                Artist.getName(), Artist.getPlaceOfBirth(), Artist.getDateOfBirth(), Artist.getDateOfDeath()));
+    public int save(List<Artist> artists) {
+        artists.forEach(artist -> jdbcTemplate.update("INSERT INTO artist(name, place_of_birth, date_of_birth, date_of_death) VALUES(?, ?, ?, ?);",
+                artist.getName(), artist.getPlaceOfBirth(), artist.getDateOfBirth(), artist.getDateOfDeath()));
         return 1;
     }
 
-    public int update(Artist Artist) {
-        jdbcTemplate.update("UPDATE artist SET name = ?, place_of_birth = ?, date_of_birth = ?, date_of_death = ? WHERE id = ?",
-                Artist.getName(), Artist.getPlaceOfBirth(), Artist.getDateOfBirth(), Artist.getDateOfDeath());
-        return 1;
+    public int update(Artist artist) {
+        return jdbcTemplate.update("UPDATE artist SET name = ?, place_of_birth = ?, date_of_birth = ?, date_of_death = ? WHERE id = ?",
+                artist.getName(), artist.getPlaceOfBirth(), artist.getDateOfBirth(), artist.getDateOfDeath(), artist.getId());
     }
 
     public int delete(long id) {

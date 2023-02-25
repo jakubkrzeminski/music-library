@@ -27,13 +27,13 @@ public class ArtistController {
     }
 
     @PostMapping
-    public int add(List<Artist> Artists) {
-        return artistService.add(Artists);
+    public int save(@RequestBody List<Artist> artists) {
+        return artistService.save(artists);
     }
 
-    @PutMapping
-    public int update(Artist Artist) {
-        return artistService.update(Artist);
+    @PutMapping("/{id}")
+    public int update(@PathVariable long id, @RequestBody Artist updatedArtist) {
+        return artistService.update(id, updatedArtist);
     }
 
     @DeleteMapping("/{id}")

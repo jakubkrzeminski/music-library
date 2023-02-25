@@ -27,13 +27,13 @@ public class TrackController {
     }
 
     @PostMapping
-    public int add(List<Track> tracks) {
-        return trackService.add(tracks);
+    public int save(@RequestBody List<Track> tracks) {
+        return trackService.save(tracks);
     }
 
-    @PutMapping
-    public int update(Track track) {
-        return trackService.update(track);
+    @PutMapping("/{id}")
+    public int update(@PathVariable long id, @RequestBody Track updatedTrack) {
+        return trackService.update(id, updatedTrack);
     }
 
     @DeleteMapping("/{id}")

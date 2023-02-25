@@ -23,12 +23,23 @@ public class AlbumService {
         return albumRepository.getById(id);
     }
 
-    public int add(List<Album> Albums) {
-        return albumRepository.add(Albums);
+    public int save(List<Album> albums) {
+        return albumRepository.save(albums);
     }
 
-    public int update(Album Album) {
-        return albumRepository.update(Album);
+    public int update(long id, Album updatedArtist) {
+        Album album = albumRepository.getById(id);
+
+        if (album != null) {
+            album.setArtist(updatedArtist.getArtist());
+            album.setName(updatedArtist.getName());
+            album.setNumberOfSongs(updatedArtist.getNumberOfSongs());
+
+            albumRepository.update(album);
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     public int delete(long id) {

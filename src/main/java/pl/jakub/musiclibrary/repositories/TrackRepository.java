@@ -26,16 +26,15 @@ public class TrackRepository {
                 BeanPropertyRowMapper.newInstance(Track.class), id);
     }
 
-    public int add(List<Track> tracks) {
+    public int save(List<Track> tracks) {
         tracks.forEach(track -> jdbcTemplate.update("INSERT INTO track(artist_id, album_id, length) VALUES(?, ?, ?, ?);",
                 track.getArtist().getId(), track.getAlbum().getId(), track.getLength()));
         return 1;
     }
 
     public int update(Track track) {
-        jdbcTemplate.update("UPDATE track SET artist_id = ?, album_id = ?, length = ? WHERE id = ?",
-                track.getArtist().getId(), track.getAlbum().getId(), track.getLength());
-        return 1;
+        return jdbcTemplate.update("UPDATE track SET artist_id = ?, album_id = ?, length = ? WHERE id = ?",
+                track.getArtist().getId(), track.getAlbum().getId(), track.getLength(), track.getId());
     }
 
     public int delete(long id) {

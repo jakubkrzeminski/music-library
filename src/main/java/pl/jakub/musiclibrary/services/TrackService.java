@@ -23,12 +23,23 @@ public class TrackService {
         return trackRepository.getById(id);
     }
 
-    public int add(List<Track> tracks) {
-        return trackRepository.add(tracks);
+    public int save(List<Track> tracks) {
+        return trackRepository.save(tracks);
     }
 
-    public int update(Track track) {
-        return trackRepository.update(track);
+    public int update(long id, Track updatedTrack) {
+        Track track = trackRepository.getById(id);
+
+        if (track != null) {
+            track.setArtist(updatedTrack.getArtist());
+            track.setAlbum(updatedTrack.getAlbum());
+            track.setLength(updatedTrack.getLength());
+
+            trackRepository.update(track);
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     public int delete(long id) {

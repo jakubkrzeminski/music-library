@@ -23,12 +23,24 @@ public class ArtistService {
         return artistRepository.getById(id);
     }
 
-    public int add(List<Artist> Artists) {
-        return artistRepository.add(Artists);
+    public int save(List<Artist> artists) {
+        return artistRepository.save(artists);
     }
 
-    public int update(Artist Artist) {
-        return artistRepository.update(Artist);
+    public int update(long id, Artist updatedArtist) {
+        Artist artist = artistRepository.getById(id);
+
+        if (artist != null) {
+            artist.setName(updatedArtist.getName());
+            artist.setPlaceOfBirth(updatedArtist.getPlaceOfBirth());
+            artist.setDateOfBirth(updatedArtist.getDateOfBirth());
+            artist.setDateOfDeath(updatedArtist.getDateOfDeath());
+
+            artistRepository.update(artist);
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     public int delete(long id) {

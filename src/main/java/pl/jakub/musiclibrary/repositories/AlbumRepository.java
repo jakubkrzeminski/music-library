@@ -26,16 +26,15 @@ public class AlbumRepository {
                 BeanPropertyRowMapper.newInstance(Album.class), id);
     }
 
-    public int add(List<Album> Albums) {
-        Albums.forEach(Album -> jdbcTemplate.update("INSERT INTO album(artist_id, name, number_of_songs) VALUES(?, ?, ?, ?);",
-                Album.getArtist().getId(), Album.getName(), Album.getNumberOfSongs()));
+    public int save(List<Album> albums) {
+        albums.forEach(album -> jdbcTemplate.update("INSERT INTO album(artist_id, name, number_of_songs) VALUES(?, ?, ?, ?);",
+                album.getArtist().getId(), album.getName(), album.getNumberOfSongs()));
         return 1;
     }
 
-    public int update(Album Album) {
-        jdbcTemplate.update("UPDATE album SET artist_id = ?, name = ?, number_of_songs = ? WHERE id = ?",
-                Album.getArtist().getId(), Album.getName(), Album.getNumberOfSongs());
-        return 1;
+    public int update(Album album) {
+        return jdbcTemplate.update("UPDATE album SET artist_id = ?, name = ?, number_of_songs = ? WHERE id = ?",
+                album.getArtist().getId(), album.getName(), album.getNumberOfSongs(), album.getId());
     }
 
     public int delete(long id) {

@@ -27,13 +27,13 @@ public class AlbumController {
     }
 
     @PostMapping
-    public int add(List<Album> Albums) {
-        return albumService.add(Albums);
+    public int save(@RequestBody List<Album> albums) {
+        return albumService.save(albums);
     }
 
-    @PutMapping
-    public int update(Album Album) {
-        return albumService.update(Album);
+    @PutMapping("/{id}")
+    public int update(@PathVariable long id, @RequestBody Album updatedAlbum) {
+        return albumService.update(id, updatedAlbum);
     }
 
     @DeleteMapping("/{id}")
