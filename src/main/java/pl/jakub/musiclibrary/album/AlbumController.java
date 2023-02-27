@@ -1,8 +1,6 @@
-package pl.jakub.musiclibrary.controllers;
+package pl.jakub.musiclibrary.album;
 
 import org.springframework.web.bind.annotation.*;
-import pl.jakub.musiclibrary.models.Album;
-import pl.jakub.musiclibrary.services.AlbumService;
 
 import java.util.List;
 
@@ -27,17 +25,17 @@ public class AlbumController {
     }
 
     @PostMapping
-    public int save(@RequestBody List<Album> albums) {
+    public List<Album> save(@RequestBody List<Album> albums) {
         return albumService.save(albums);
     }
 
-    @PutMapping("/{id}")
-    public int update(@PathVariable long id, @RequestBody Album updatedAlbum) {
-        return albumService.update(id, updatedAlbum);
-    }
+//    @PutMapping("/{id}")
+//    public int update(@PathVariable long id, @RequestBody Album updatedAlbum) {
+//        return albumService.update(id, updatedAlbum);
+//    }
 
     @DeleteMapping("/{id}")
-    public int delete(@PathVariable long id) {
-        return albumService.delete(id);
+    public void delete(@PathVariable long id) {
+        albumService.delete(id);
     }
 }

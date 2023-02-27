@@ -1,8 +1,6 @@
-package pl.jakub.musiclibrary.controllers;
+package pl.jakub.musiclibrary.track;
 
 import org.springframework.web.bind.annotation.*;
-import pl.jakub.musiclibrary.models.Track;
-import pl.jakub.musiclibrary.services.TrackService;
 
 import java.util.List;
 
@@ -27,17 +25,17 @@ public class TrackController {
     }
 
     @PostMapping
-    public int save(@RequestBody List<Track> tracks) {
+    public List<Track> save(@RequestBody List<Track> tracks) {
         return trackService.save(tracks);
     }
 
-    @PutMapping("/{id}")
-    public int update(@PathVariable long id, @RequestBody Track updatedTrack) {
-        return trackService.update(id, updatedTrack);
-    }
+//    @PutMapping("/{id}")
+//    public int update(@PathVariable long id, @RequestBody Track updatedTrack) {
+//        return trackService.update(id, updatedTrack);
+//    }
 
     @DeleteMapping("/{id}")
-    public int delete(@PathVariable long id) {
-        return trackService.delete(id);
+    public void delete(@PathVariable long id) {
+        trackService.delete(id);
     }
 }

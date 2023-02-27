@@ -1,8 +1,6 @@
-package pl.jakub.musiclibrary.controllers;
+package pl.jakub.musiclibrary.artist;
 
 import org.springframework.web.bind.annotation.*;
-import pl.jakub.musiclibrary.models.Artist;
-import pl.jakub.musiclibrary.services.ArtistService;
 
 import java.util.List;
 
@@ -27,17 +25,17 @@ public class ArtistController {
     }
 
     @PostMapping
-    public int save(@RequestBody List<Artist> artists) {
+    public List<Artist> save(@RequestBody List<Artist> artists) {
         return artistService.save(artists);
     }
 
-    @PutMapping("/{id}")
-    public int update(@PathVariable long id, @RequestBody Artist updatedArtist) {
-        return artistService.update(id, updatedArtist);
-    }
+//    @PutMapping("/{id}")
+//    public int update(@PathVariable long id, @RequestBody Artist updatedArtist) {
+//        return artistService.update(id, updatedArtist);
+//    }
 
     @DeleteMapping("/{id}")
-    public int delete(@PathVariable long id) {
-        return artistService.delete(id);
+    public void delete(@PathVariable long id) {
+        artistService.delete(id);
     }
 }
