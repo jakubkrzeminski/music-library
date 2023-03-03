@@ -8,9 +8,9 @@ import java.util.List;
 @RequestMapping("/albums")
 public class AlbumController {
 
-    final AlbumService albumService;
+    final AlbumServiceImpl albumService;
 
-    public AlbumController(AlbumService albumService) {
+    public AlbumController(AlbumServiceImpl albumService) {
         this.albumService = albumService;
     }
 

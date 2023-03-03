@@ -8,9 +8,9 @@ import java.util.List;
 @RequestMapping("/tracks")
 public class TrackController {
 
-    final TrackService trackService;
+    final TrackServiceImpl trackService;
 
-    public TrackController(TrackService trackService) {
+    public TrackController(TrackServiceImpl trackService) {
         this.trackService = trackService;
     }
 

@@ -8,9 +8,9 @@ import java.util.List;
 @RequestMapping("/artists")
 public class ArtistController {
 
-    final ArtistService artistService;
+    final ArtistServiceImpl artistService;
 
-    public ArtistController(ArtistService artistService) {
+    public ArtistController(ArtistServiceImpl artistService) {
         this.artistService = artistService;
     }
 
