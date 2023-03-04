@@ -16,12 +16,12 @@ public class ArtistController {
 
     @GetMapping
     public List<Artist> getAll() {
-        return artistService.getAll();
+        return artistService.findAll();
     }
 
     @GetMapping("/{id}")
     public Artist getById(@PathVariable Long id) {
-        return artistService.getById(id);
+        return artistService.findById(id);
     }
 
     @PostMapping

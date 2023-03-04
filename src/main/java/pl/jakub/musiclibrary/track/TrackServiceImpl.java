@@ -14,13 +14,13 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public List<Track> getAll() {
+    public List<Track> findAll() {
         return trackRepository.findAll();
     }
 
     @Override
-    public Track getById(Long id) {
-        return trackRepository.getById(id);
+    public Track findById(Long id) {
+        return trackRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @Override

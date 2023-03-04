@@ -16,12 +16,12 @@ public class TrackController {
 
     @GetMapping
     public List<Track> getAll() {
-        return trackService.getAll();
+        return trackService.findAll();
     }
 
     @GetMapping("/{id}")
     public Track getById(@PathVariable Long id) {
-        return trackService.getById(id);
+        return trackService.findById(id);
     }
 
     @PostMapping

@@ -3,6 +3,7 @@ package pl.jakub.musiclibrary.artist;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArtistServiceImpl implements ArtistService {
@@ -14,13 +15,13 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public List<Artist> getAll() {
+    public List<Artist> findAll() {
         return artistRepository.findAll();
     }
 
     @Override
-    public Artist getById(Long id) {
-        return artistRepository.getById(id);
+    public Artist findById(Long id) {
+        return artistRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @Override

@@ -14,13 +14,13 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<Album> getAll() {
+    public List<Album> findAll() {
         return albumRepository.findAll();
     }
 
     @Override
-    public Album getById(Long id) {
-        return albumRepository.getById(id);
+    public Album findById(Long id) {
+        return albumRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @Override

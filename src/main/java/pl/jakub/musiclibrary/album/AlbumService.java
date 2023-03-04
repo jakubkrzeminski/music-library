@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface AlbumService {
 
-    List<Album> getAll();
+    List<Album> findAll();
 
-    Album getById(Long id);
+    Album findById(Long id);
 
     List<Album> save(List<Album> albums);
 

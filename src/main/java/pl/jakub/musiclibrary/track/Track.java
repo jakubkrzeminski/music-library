@@ -1,5 +1,6 @@
 package pl.jakub.musiclibrary.track;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import pl.jakub.musiclibrary.album.Album;
@@ -19,11 +20,11 @@ public class Track {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
 

@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface TrackService {
 
-    List<Track> getAll();
+    List<Track> findAll();
 
-    Track getById(Long id);
+    Track findById(Long id);
 
     List<Track> save(List<Track> tracks);
 

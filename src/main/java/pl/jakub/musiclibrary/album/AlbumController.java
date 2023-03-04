@@ -16,12 +16,12 @@ public class AlbumController {
 
     @GetMapping
     public List<Album> getAll() {
-        return albumService.getAll();
+        return albumService.findAll();
     }
 
     @GetMapping("/{id}")
     public Album getById(@PathVariable Long id) {
-        return albumService.getById(id);
+        return albumService.findById(id);
     }
 
     @PostMapping
