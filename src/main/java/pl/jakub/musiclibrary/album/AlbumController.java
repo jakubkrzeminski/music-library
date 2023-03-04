@@ -20,7 +20,7 @@ public class AlbumController {
     }
 
     @GetMapping("/{id}")
-    public Album getById(@PathVariable long id) {
+    public Album getById(@PathVariable Long id) {
         return albumService.getById(id);
     }
 
@@ -30,12 +30,12 @@ public class AlbumController {
     }
 
 //    @PutMapping("/{id}")
-//    public int update(@PathVariable long id, @RequestBody Album updatedAlbum) {
+//    public int update(@PathVariable Long id, @RequestBody Album updatedAlbum) {
 //        return albumService.update(id, updatedAlbum);
 //    }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
+    public void delete(@PathVariable Long id) {
         albumService.delete(id);
     }
 }

@@ -19,7 +19,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public Album getById(long id) {
+    public Album getById(Long id) {
         return albumRepository.getById(id);
     }
 
@@ -29,7 +29,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
 //    @Override
-//    public int update(long id, Album updatedArtist) {
+//    public int update(Long id, Album updatedArtist) {
 //        Album album = albumRepository.getById(id);
 //
 //        if (album != null) {
@@ -45,7 +45,7 @@ public class AlbumServiceImpl implements AlbumService {
 //    }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         albumRepository.deleteById(id);
     }
 }

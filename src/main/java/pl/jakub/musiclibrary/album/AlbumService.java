@@ -6,11 +6,11 @@ public interface AlbumService {
 
     List<Album> getAll();
 
-    Album getById(long id);
+    Album getById(Long id);
 
     List<Album> save(List<Album> albums);
 
-//    int update(long id, Album updatedArtist);
+//    int update(Long id, Album updatedArtist);
 
-    void delete(long id);
+    void delete(Long id);
 }

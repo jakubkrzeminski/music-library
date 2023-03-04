@@ -6,11 +6,12 @@ import java.util.List;
 
     List<Artist> getAll();
 
-    Artist getById(long id);
+    Artist getById(Long id);
 
     List<Artist> save(List<Artist> artists);
 
-//    int update(long id, Artist updatedArtist);
+//    int update(Long
+//   id, Artist updatedArtist);
 
-    void delete(long id);
+    void delete(Long id);
 }

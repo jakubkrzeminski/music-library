@@ -19,7 +19,7 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public Track getById(long id) {
+    public Track getById(Long id) {
         return trackRepository.getById(id);
     }
 
@@ -29,7 +29,7 @@ public class TrackServiceImpl implements TrackService{
     }
 
 //    @Override
-//    public int update(long id, Track updatedTrack) {
+//    public int update(Long id, Track updatedTrack) {
 //        Track track = trackRepository.getById(id);
 //
 //        if (track != null) {
@@ -45,7 +45,7 @@ public class TrackServiceImpl implements TrackService{
 //    }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         trackRepository.deleteById(id);
     }
 }

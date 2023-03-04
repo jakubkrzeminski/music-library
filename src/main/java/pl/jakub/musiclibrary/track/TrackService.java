@@ -6,11 +6,11 @@ public interface TrackService {
 
     List<Track> getAll();
 
-    Track getById(long id);
+    Track getById(Long id);
 
     List<Track> save(List<Track> tracks);
 
-//    int update(long id, Track updatedTrack);
+//    int update(Long id, Track updatedTrack);
 
-    void delete(long id);
+    void delete(Long id);
 }

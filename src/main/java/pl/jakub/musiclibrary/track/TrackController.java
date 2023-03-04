@@ -20,7 +20,7 @@ public class TrackController {
     }
 
     @GetMapping("/{id}")
-    public Track getById(@PathVariable long id) {
+    public Track getById(@PathVariable Long id) {
         return trackService.getById(id);
     }
 
@@ -30,12 +30,12 @@ public class TrackController {
     }
 
 //    @PutMapping("/{id}")
-//    public int update(@PathVariable long id, @RequestBody Track updatedTrack) {
+//    public int update(@PathVariable Long id, @RequestBody Track updatedTrack) {
 //        return trackService.update(id, updatedTrack);
 //    }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
+    public void delete(@PathVariable Long id) {
         trackService.delete(id);
     }
 }
