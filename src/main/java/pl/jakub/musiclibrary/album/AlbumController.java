@@ -1,7 +1,10 @@
 package pl.jakub.musiclibrary.album;
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.jakub.musiclibrary.artist.Artist;
 
 import java.util.List;
 
@@ -16,27 +19,33 @@ public class AlbumController {
     }
 
     @GetMapping
-    public List<Album> getAll() {
-        return albumService.findAll();
+    public ResponseEntity<List<Album>> getAll() {
+        return new ResponseEntity<>(albumService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Album getById(@PathVariable Long id) {
-        return albumService.findById(id);
+    public ResponseEntity<Album> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(albumService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public Album save(@Valid @RequestBody Album album) {
-        return albumService.save(album);
+    public ResponseEntity<Album> save(@Valid @RequestBody Album album) {
+        return new ResponseEntity<>(albumService.save(album), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public Album update(@PathVariable Long id, @Valid @RequestBody Album updatedAlbum) {
-        return albumService.update(id, updatedAlbum);
+    public ResponseEntity<Album> update(@PathVariable Long id, @Valid @RequestBody Album updatedAlbum) {
+        return new ResponseEntity<>(albumService.update(id, updatedAlbum), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
         albumService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/by-name")
+    public ResponseEntity<List<Album>> getByName(@RequestParam String name) {
+        return new ResponseEntity<>(albumService.findByName(name), HttpStatus.OK);
     }
 }

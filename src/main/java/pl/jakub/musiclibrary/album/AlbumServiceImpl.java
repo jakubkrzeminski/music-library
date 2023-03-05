@@ -1,7 +1,6 @@
 package pl.jakub.musiclibrary.album;
 
 import org.springframework.stereotype.Service;
-import pl.jakub.musiclibrary.artist.Artist;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +48,10 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public void delete(Long id) {
         albumRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Album> findByName(String name) {
+        return albumRepository.findByName(name);
     }
 }

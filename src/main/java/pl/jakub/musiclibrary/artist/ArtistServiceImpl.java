@@ -50,4 +50,9 @@ public class ArtistServiceImpl implements ArtistService {
     public void delete(Long id) {
         artistRepository.deleteById(id);
     }
+
+    @Override
+    public List<Artist> findByName(String name) {
+        return artistRepository.findByName(name);
+    }
 }

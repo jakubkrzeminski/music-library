@@ -13,4 +13,6 @@ public interface AlbumService {
     Album update(Long id, Album updatedArtist);
 
     void delete(Long id);
+
+    List<Album> findByName(String name);
 }

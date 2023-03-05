@@ -13,4 +13,6 @@ public interface TrackService {
     Track update(Long id, Track updatedTrack);
 
     void delete(Long id);
+
+    List<Track> findByName(String name);
 }

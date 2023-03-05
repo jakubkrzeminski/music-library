@@ -14,4 +14,6 @@ public interface ArtistService {
     Artist update(Long id, Artist updatedArtist);
 
     void delete(Long id);
+
+    List<Artist> findByName(String name);
 }
