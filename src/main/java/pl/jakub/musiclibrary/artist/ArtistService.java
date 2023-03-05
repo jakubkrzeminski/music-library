@@ -11,7 +11,7 @@ public interface ArtistService {
 
     List<Artist> save(List<Artist> artists);
 
-//    int update(Long id, Artist updatedArtist);
+    Artist update(Long id, Artist updatedArtist);
 
     void delete(Long id);
 }

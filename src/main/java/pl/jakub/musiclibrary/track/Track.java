@@ -3,8 +3,12 @@ package pl.jakub.musiclibrary.track;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import pl.jakub.musiclibrary.album.Album;
 import pl.jakub.musiclibrary.artist.Artist;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "track")
@@ -17,7 +21,6 @@ public class Track {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -28,7 +31,13 @@ public class Track {
     @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
 
-    @Column(name = "length")
     private Integer length;
 
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
 }

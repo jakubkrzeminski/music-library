@@ -29,10 +29,10 @@ public class TrackController {
         return trackService.save(tracks);
     }
 
-//    @PutMapping("/{id}")
-//    public int update(@PathVariable Long id, @RequestBody Track updatedTrack) {
-//        return trackService.update(id, updatedTrack);
-//    }
+    @PutMapping("/{id}")
+    public Track update(@PathVariable Long id, @RequestBody Track updatedTrack) {
+        return trackService.update(id, updatedTrack);
+    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

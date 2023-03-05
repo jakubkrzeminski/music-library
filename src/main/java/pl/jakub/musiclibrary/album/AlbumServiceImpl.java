@@ -1,8 +1,10 @@
 package pl.jakub.musiclibrary.album;
 
 import org.springframework.stereotype.Service;
+import pl.jakub.musiclibrary.artist.Artist;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlbumServiceImpl implements AlbumService {
@@ -28,21 +30,21 @@ public class AlbumServiceImpl implements AlbumService {
         return albumRepository.saveAll(albums);
     }
 
-//    @Override
-//    public int update(Long id, Album updatedArtist) {
-//        Album album = albumRepository.getById(id);
-//
-//        if (album != null) {
-//            album.setArtist(updatedArtist.getArtist());
-//            album.setName(updatedArtist.getName());
-//            album.setNumberOfSongs(updatedArtist.getNumberOfSongs());
-//
-//            albumRepository.update(album);
-//            return 1;
-//        } else {
-//            return -1;
-//        }
-//    }
+    @Override
+    public Album update(Long id, Album updatedArtist) {
+        Optional<Album> albumOptional = albumRepository.findById(id);
+
+        if (albumOptional.isPresent()) {
+            Album album = albumOptional.get();
+            album.setArtist(updatedArtist.getArtist());
+            album.setName(updatedArtist.getName());
+            album.setNumberOfSongs(updatedArtist.getNumberOfSongs());
+
+            albumRepository.save(album);
+            return album;
+        }
+        throw new RuntimeException();
+    }
 
     @Override
     public void delete(Long id) {

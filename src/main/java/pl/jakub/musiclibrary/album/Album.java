@@ -6,7 +6,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import pl.jakub.musiclibrary.artist.Artist;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "album")
@@ -20,12 +24,18 @@ public class Album {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
-    @JsonProperty
     private Artist artist;
 
-    @Column(name = "name")
     private String name;
 
     @Column(name = "number_of_songs")
     private Integer numberOfSongs;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
 }

@@ -3,6 +3,7 @@ package pl.jakub.musiclibrary.track;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrackServiceImpl implements TrackService{
@@ -28,21 +29,21 @@ public class TrackServiceImpl implements TrackService{
         return trackRepository.saveAll(tracks);
     }
 
-//    @Override
-//    public int update(Long id, Track updatedTrack) {
-//        Track track = trackRepository.getById(id);
-//
-//        if (track != null) {
-//            track.setArtist(updatedTrack.getArtist());
-//            track.setAlbum(updatedTrack.getAlbum());
-//            track.setLength(updatedTrack.getLength());
-//
-//            trackRepository.update(track);
-//            return 1;
-//        } else {
-//            return -1;
-//        }
-//    }
+    @Override
+    public Track update(Long id, Track updatedTrack) {
+        Optional<Track> trackOptional = trackRepository.findById(id);
+
+        if (trackOptional.isPresent()) {
+            Track track = trackOptional.get();
+            track.setArtist(updatedTrack.getArtist());
+            track.setAlbum(updatedTrack.getAlbum());
+            track.setLength(updatedTrack.getLength());
+
+            trackRepository.save(track);
+            return track;
+        }
+        throw new RuntimeException();
+    }
 
     @Override
     public void delete(Long id) {

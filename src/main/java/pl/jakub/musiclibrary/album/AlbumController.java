@@ -29,10 +29,10 @@ public class AlbumController {
         return albumService.save(albums);
     }
 
-//    @PutMapping("/{id}")
-//    public int update(@PathVariable Long id, @RequestBody Album updatedAlbum) {
-//        return albumService.update(id, updatedAlbum);
-//    }
+    @PutMapping("/{id}")
+    public Album update(@PathVariable Long id, @RequestBody Album updatedAlbum) {
+        return albumService.update(id, updatedAlbum);
+    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

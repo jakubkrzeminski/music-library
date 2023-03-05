@@ -29,22 +29,22 @@ public class ArtistServiceImpl implements ArtistService {
         return artistRepository.saveAll(artists);
     }
 
-//    @Override
-//    public int update(Long id, Artist updatedArtist) {
-//        Artist artist = artistRepository.getById(id);
-//
-//        if (artist != null) {
-//            artist.setName(updatedArtist.getName());
-//            artist.setPlaceOfBirth(updatedArtist.getPlaceOfBirth());
-//            artist.setDateOfBirth(updatedArtist.getDateOfBirth());
-//            artist.setDateOfDeath(updatedArtist.getDateOfDeath());
-//
-//            artistRepository.update(artist);
-//            return 1;
-//        } else {
-//            return -1;
-//        }
-//    }
+    @Override
+    public Artist update(Long id, Artist updatedArtist) {
+        Optional<Artist> artistOptional = artistRepository.findById(id);
+
+        if (artistOptional.isPresent()) {
+            Artist artist = artistOptional.get();
+            artist.setName(updatedArtist.getName());
+            artist.setPlaceOfBirth(updatedArtist.getPlaceOfBirth());
+            artist.setDateOfBirth(updatedArtist.getDateOfBirth());
+            artist.setDateOfDeath(updatedArtist.getDateOfDeath());
+
+            artistRepository.save(artist);
+            return artist;
+        }
+            throw new RuntimeException();
+    }
 
     @Override
     public void delete(Long id) {

@@ -29,10 +29,10 @@ public class ArtistController {
         return artistService.save(artists);
     }
 
-//    @PutMapping("/{id}")
-//    public int update(@PathVariable Long id, @RequestBody Artist updatedArtist) {
-//        return artistService.update(id, updatedArtist);
-//    }
+    @PutMapping("/{id}")
+    public Artist update(@PathVariable Long id, @RequestBody Artist updatedArtist) {
+        return artistService.update(id, updatedArtist);
+    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

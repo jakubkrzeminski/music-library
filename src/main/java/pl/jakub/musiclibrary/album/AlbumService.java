@@ -10,7 +10,7 @@ public interface AlbumService {
 
     List<Album> save(List<Album> albums);
 
-//    int update(Long id, Album updatedArtist);
+    Album update(Long id, Album updatedArtist);
 
     void delete(Long id);
 }

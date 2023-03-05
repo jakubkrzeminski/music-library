@@ -10,7 +10,7 @@ public interface TrackService {
 
     List<Track> save(List<Track> tracks);
 
-//    int update(Long id, Track updatedTrack);
+    Track update(Long id, Track updatedTrack);
 
     void delete(Long id);
 }
