@@ -26,8 +26,8 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<Album> save(List<Album> albums) {
-        return albumRepository.saveAll(albums);
+    public Album save(Album album) {
+        return albumRepository.save(album);
     }
 
     @Override

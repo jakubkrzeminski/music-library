@@ -26,8 +26,8 @@ public class AlbumController {
     }
 
     @PostMapping
-    public List<Album> save(@Valid @RequestBody List<Album> albums) {
-        return albumService.save(albums);
+    public Album save(@Valid @RequestBody Album album) {
+        return albumService.save(album);
     }
 
     @PutMapping("/{id}")

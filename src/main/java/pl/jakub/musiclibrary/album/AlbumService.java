@@ -8,7 +8,7 @@ public interface AlbumService {
 
     Album findById(Long id);
 
-    List<Album> save(List<Album> albums);
+    Album save(Album album);
 
     Album update(Long id, Album updatedArtist);
 

@@ -26,8 +26,8 @@ public class TrackController {
     }
 
     @PostMapping
-    public List<Track> save(@Valid @RequestBody List<Track> tracks) {
-        return trackService.save(tracks);
+    public Track save(@Valid @RequestBody Track track) {
+        return trackService.save(track);
     }
 
     @PutMapping("/{id}")

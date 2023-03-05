@@ -8,7 +8,7 @@ public interface TrackService {
 
     Track findById(Long id);
 
-    List<Track> save(List<Track> tracks);
+    Track save(Track tracks);
 
     Track update(Long id, Track updatedTrack);
 

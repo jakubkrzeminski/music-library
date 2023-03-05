@@ -9,7 +9,7 @@ public interface ArtistService {
 
     Artist findById(Long id);
 
-    List<Artist> save(List<Artist> artists);
+    Artist save(Artist artist);
 
     Artist update(Long id, Artist updatedArtist);
 

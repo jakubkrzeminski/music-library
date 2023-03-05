@@ -25,8 +25,8 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public List<Artist> save(List<Artist> artists) {
-        return artistRepository.saveAll(artists);
+    public Artist save(Artist artist) {
+        return artistRepository.save(artist);
     }
 
     @Override

@@ -26,8 +26,8 @@ public class ArtistController {
     }
 
     @PostMapping
-    public List<Artist> save(@Valid @RequestBody List<Artist> artists) {
-        return artistService.save(artists);
+    public Artist save(@Valid @RequestBody Artist artist) {
+        return artistService.save(artist);
     }
 
     @PutMapping("/{id}")

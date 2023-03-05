@@ -25,8 +25,8 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public List<Track> save(List<Track> tracks) {
-        return trackRepository.saveAll(tracks);
+    public Track save(Track track) {
+        return trackRepository.save(track);
     }
 
     @Override
