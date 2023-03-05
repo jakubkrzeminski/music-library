@@ -1,5 +1,6 @@
 package pl.jakub.musiclibrary.artist;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,12 +26,12 @@ public class ArtistController {
     }
 
     @PostMapping
-    public List<Artist> save(@RequestBody List<Artist> artists) {
+    public List<Artist> save(@Valid @RequestBody List<Artist> artists) {
         return artistService.save(artists);
     }
 
     @PutMapping("/{id}")
-    public Artist update(@PathVariable Long id, @RequestBody Artist updatedArtist) {
+    public Artist update(@PathVariable Long id, @Valid @RequestBody Artist updatedArtist) {
         return artistService.update(id, updatedArtist);
     }
 

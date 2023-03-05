@@ -1,5 +1,6 @@
 package pl.jakub.musiclibrary.track;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,12 +26,12 @@ public class TrackController {
     }
 
     @PostMapping
-    public List<Track> save(@RequestBody List<Track> tracks) {
+    public List<Track> save(@Valid @RequestBody List<Track> tracks) {
         return trackService.save(tracks);
     }
 
     @PutMapping("/{id}")
-    public Track update(@PathVariable Long id, @RequestBody Track updatedTrack) {
+    public Track update(@PathVariable Long id, @Valid @RequestBody Track updatedTrack) {
         return trackService.update(id, updatedTrack);
     }
 

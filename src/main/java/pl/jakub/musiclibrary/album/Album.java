@@ -3,6 +3,7 @@ package pl.jakub.musiclibrary.album;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,10 @@ public class Album {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
+    @NotNull
     private Artist artist;
 
+    @NotNull
     private String name;
 
     @Column(name = "number_of_songs")

@@ -1,5 +1,6 @@
 package pl.jakub.musiclibrary.album;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,12 +26,12 @@ public class AlbumController {
     }
 
     @PostMapping
-    public List<Album> save(@RequestBody List<Album> albums) {
+    public List<Album> save(@Valid @RequestBody List<Album> albums) {
         return albumService.save(albums);
     }
 
     @PutMapping("/{id}")
-    public Album update(@PathVariable Long id, @RequestBody Album updatedAlbum) {
+    public Album update(@PathVariable Long id, @Valid @RequestBody Album updatedAlbum) {
         return albumService.update(id, updatedAlbum);
     }
 
