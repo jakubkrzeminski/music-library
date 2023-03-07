@@ -1,11 +1,9 @@
 package pl.jakub.musiclibrary.track;
 
 import jakarta.validation.Valid;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.jakub.musiclibrary.album.Album;
 
 import java.util.List;
 
@@ -25,8 +23,8 @@ public class TrackController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<List<Track>> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
-        return new ResponseEntity<>(trackService.findPage(pageNumber, pageSize), HttpStatus.OK);
+    public ResponseEntity<List<Track>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+        return new ResponseEntity<>(trackService.findSortedPage(pageNumber, pageSize), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

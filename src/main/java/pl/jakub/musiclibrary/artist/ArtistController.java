@@ -23,8 +23,8 @@ public class ArtistController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<List<Artist>> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
-        return new ResponseEntity<>(artistService.findPage(pageNumber, pageSize), HttpStatus.OK);
+    public ResponseEntity<List<Artist>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+        return new ResponseEntity<>(artistService.findSortedPage(pageNumber, pageSize), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

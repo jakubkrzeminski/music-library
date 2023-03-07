@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.jakub.musiclibrary.artist.Artist;
 
 import java.util.List;
 
@@ -24,8 +23,8 @@ public class AlbumController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<List<Album>> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
-        return new ResponseEntity<>(albumService.findPage(pageNumber, pageSize), HttpStatus.OK);
+    public ResponseEntity<List<Album>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+        return new ResponseEntity<>(albumService.findSortedPage(pageNumber, pageSize), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

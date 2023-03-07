@@ -6,7 +6,7 @@ public interface TrackService {
 
     List<Track> findAll();
 
-    List<Track> findPage(Integer pageNumber, Integer pageSize);
+    List<Track> findSortedPage(Integer pageNumber, Integer pageSize);
 
     Track findById(Long id);
 
