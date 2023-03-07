@@ -1,5 +1,7 @@
 package pl.jakub.musiclibrary.artist;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,12 @@ public class ArtistServiceImpl implements ArtistService {
     @Override
     public List<Artist> findAll() {
         return artistRepository.findAll();
+    }
+
+    @Override
+    public List<Artist> findPage(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return artistRepository.findAll(pageable).getContent();
     }
 
     @Override

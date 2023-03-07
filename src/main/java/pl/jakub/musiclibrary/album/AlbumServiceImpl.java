@@ -1,5 +1,7 @@
 package pl.jakub.musiclibrary.album;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,12 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public List<Album> findAll() {
         return albumRepository.findAll();
+    }
+
+    @Override
+    public List<Album> findPage(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return albumRepository.findAll(pageable).getContent();
     }
 
     @Override

@@ -22,9 +22,19 @@ public class ArtistController {
         return new ResponseEntity<>(artistService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/page")
+    public ResponseEntity<List<Artist>> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+        return new ResponseEntity<>(artistService.findPage(pageNumber, pageSize), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Artist> getById(@PathVariable Long id) {
         return new ResponseEntity<>(artistService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/by-name")
+    public ResponseEntity<List<Artist>> getByName(@RequestParam String name) {
+        return new ResponseEntity<>(artistService.findByName(name), HttpStatus.OK);
     }
 
     @PostMapping
@@ -41,10 +51,5 @@ public class ArtistController {
     public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
         artistService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/by-name")
-    public ResponseEntity<List<Artist>> getByName(@RequestParam String name) {
-        return new ResponseEntity<>(artistService.findByName(name), HttpStatus.OK);
     }
 }

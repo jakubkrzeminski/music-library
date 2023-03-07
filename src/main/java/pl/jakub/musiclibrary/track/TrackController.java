@@ -24,9 +24,19 @@ public class TrackController {
         return new ResponseEntity<>(trackService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/page")
+    public ResponseEntity<List<Track>> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+        return new ResponseEntity<>(trackService.findPage(pageNumber, pageSize), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Track> getById(@PathVariable Long id) {
         return new ResponseEntity<>(trackService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/by-name")
+    public ResponseEntity<List<Track>> getByName(@RequestParam String name) {
+        return new ResponseEntity<>(trackService.findByName(name), HttpStatus.OK);
     }
 
     @PostMapping
@@ -43,10 +53,5 @@ public class TrackController {
     public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
         trackService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/by-name")
-    public ResponseEntity<List<Track>> getByName(@RequestParam String name) {
-        return new ResponseEntity<>(trackService.findByName(name), HttpStatus.OK);
     }
 }

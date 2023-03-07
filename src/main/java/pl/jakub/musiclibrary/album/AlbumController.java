@@ -23,9 +23,19 @@ public class AlbumController {
         return new ResponseEntity<>(albumService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/page")
+    public ResponseEntity<List<Album>> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+        return new ResponseEntity<>(albumService.findPage(pageNumber, pageSize), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Album> getById(@PathVariable Long id) {
         return new ResponseEntity<>(albumService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/by-name")
+    public ResponseEntity<List<Album>> getByName(@RequestParam String name) {
+        return new ResponseEntity<>(albumService.findByName(name), HttpStatus.OK);
     }
 
     @PostMapping
@@ -42,10 +52,5 @@ public class AlbumController {
     public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
         albumService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/by-name")
-    public ResponseEntity<List<Album>> getByName(@RequestParam String name) {
-        return new ResponseEntity<>(albumService.findByName(name), HttpStatus.OK);
     }
 }

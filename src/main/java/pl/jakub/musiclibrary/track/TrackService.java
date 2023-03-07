@@ -6,6 +6,8 @@ public interface TrackService {
 
     List<Track> findAll();
 
+    List<Track> findPage(Integer pageNumber, Integer pageSize);
+
     Track findById(Long id);
 
     Track save(Track tracks);

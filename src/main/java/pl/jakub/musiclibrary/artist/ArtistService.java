@@ -1,11 +1,12 @@
 package pl.jakub.musiclibrary.artist;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ArtistService {
 
     List<Artist> findAll();
+
+    List<Artist> findPage(Integer pageNumber, Integer pageSize);
 
     Artist findById(Long id);
 

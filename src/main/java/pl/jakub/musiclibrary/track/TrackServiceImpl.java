@@ -1,5 +1,7 @@
 package pl.jakub.musiclibrary.track;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,12 @@ public class TrackServiceImpl implements TrackService{
     @Override
     public List<Track> findAll() {
         return trackRepository.findAll();
+    }
+
+    @Override
+    public List<Track> findPage(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return trackRepository.findAll(pageable).getContent();
     }
 
     @Override
