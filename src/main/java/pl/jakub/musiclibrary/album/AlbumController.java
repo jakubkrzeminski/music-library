@@ -23,8 +23,8 @@ public class AlbumController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<List<Album>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
-        return new ResponseEntity<>(albumService.findSortedPage(pageNumber, pageSize), HttpStatus.OK);
+    public ResponseEntity<List<Album>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize, @RequestParam String sort, @RequestParam(defaultValue = "false") Boolean descending) {
+        return new ResponseEntity<>(albumService.findSortedPage(pageNumber, pageSize, sort, descending), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

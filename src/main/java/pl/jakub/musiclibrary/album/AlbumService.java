@@ -6,7 +6,7 @@ public interface AlbumService {
 
     List<Album> findAll();
 
-    List<Album> findSortedPage(Integer pageNumber, Integer pageSize);
+    List<Album> findSortedPage(Integer pageNumber, Integer pageSize, String sort, Boolean descending);
 
     Album findById(Long id);
 

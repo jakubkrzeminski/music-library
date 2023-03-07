@@ -23,8 +23,8 @@ public class TrackController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<List<Track>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
-        return new ResponseEntity<>(trackService.findSortedPage(pageNumber, pageSize), HttpStatus.OK);
+    public ResponseEntity<List<Track>> getSortedPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize, @RequestParam String sort, @RequestParam(defaultValue = "false") Boolean descending) {
+        return new ResponseEntity<>(trackService.findSortedPage(pageNumber, pageSize, sort, descending), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

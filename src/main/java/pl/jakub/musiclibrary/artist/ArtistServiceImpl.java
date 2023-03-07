@@ -23,8 +23,11 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public List<Artist> findSortedPage(Integer pageNumber, Integer pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("name").ascending());
+    public List<Artist> findSortedPage(Integer pageNumber, Integer pageSize, String sort, Boolean descending) {
+        Sort.Direction direction;
+        if (descending) direction = Sort.Direction.DESC;
+        else direction = Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(direction, sort));
         return artistRepository.findAll(pageable).getContent();
     }
 

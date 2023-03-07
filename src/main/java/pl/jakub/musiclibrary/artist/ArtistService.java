@@ -6,7 +6,7 @@ public interface ArtistService {
 
     List<Artist> findAll();
 
-    List<Artist> findSortedPage(Integer pageNumber, Integer pageSize);
+    List<Artist> findSortedPage(Integer pageNumber, Integer pageSize, String sort, Boolean descending);
 
     Artist findById(Long id);
 
