@@ -24,7 +24,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     @NotNull(message = "Artist must not be null.")
     private Artist artist;
