@@ -47,8 +47,8 @@ public class AlbumServiceImpl implements AlbumService {
 
         if (albumOptional.isPresent()) {
             Album album = albumOptional.get();
-            album.setArtist(updatedArtist.getArtist());
             album.setName(updatedArtist.getName());
+            album.setArtist(updatedArtist.getArtist());
             album.setNumberOfSongs(updatedArtist.getNumberOfSongs());
 
             albumRepository.save(album);

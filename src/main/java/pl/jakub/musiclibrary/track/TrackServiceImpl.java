@@ -47,6 +47,7 @@ public class TrackServiceImpl implements TrackService{
 
         if (trackOptional.isPresent()) {
             Track track = trackOptional.get();
+            track.setName(updatedTrack.getName());
             track.setArtist(updatedTrack.getArtist());
             track.setAlbum(updatedTrack.getAlbum());
             track.setLength(updatedTrack.getLength());
