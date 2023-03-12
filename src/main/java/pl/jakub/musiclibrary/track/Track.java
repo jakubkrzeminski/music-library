@@ -26,12 +26,12 @@ public class Track {
     @NotEmpty(message = "Name is a required field.")
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     @NotNull(message = "Artist must not be null.")
     private Artist artist;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
 

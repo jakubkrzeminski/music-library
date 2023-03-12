@@ -24,13 +24,13 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NotEmpty(message = "Name is a required field.")
+    private String name;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     @NotNull(message = "Artist must not be null.")
     private Artist artist;
-
-    @NotEmpty(message = "Name is a required field.")
-    private String name;
 
     @Column(name = "number_of_songs")
     private Integer numberOfSongs;
