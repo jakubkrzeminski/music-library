@@ -42,11 +42,9 @@ public class ArtistController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Artist> getById(@PathVariable Long id) {
-        Artist artist = artistService.findById(id);
-        if (artist == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        else
-            return new ResponseEntity<>(artist, HttpStatus.OK);
+        return artistService.findById(id)
+                .map(artist -> new ResponseEntity<>(artist, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/by-name")
@@ -67,8 +65,8 @@ public class ArtistController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Artist> update(@PathVariable Long id, @Valid @RequestBody Artist updatedArtist) {
-        Artist artist = artistService.findById(id);
-        if (artist == null)
+        Optional<Artist> artist = artistService.findById(id);
+        if (artist.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
             return new ResponseEntity<>(artistService.update(id, updatedArtist), HttpStatus.OK);
@@ -76,8 +74,8 @@ public class ArtistController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
-        Artist artist = artistService.findById(id);
-        if (artist == null)
+        Optional<Artist> artist = artistService.findById(id);
+        if (artist.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else {
             artistService.delete(id);

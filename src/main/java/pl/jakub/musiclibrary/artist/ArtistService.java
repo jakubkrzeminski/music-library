@@ -1,6 +1,7 @@
 package pl.jakub.musiclibrary.artist;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ArtistService {
 
@@ -8,7 +9,7 @@ public interface ArtistService {
 
     List<Artist> findSortedPage(Integer pageNumber, Integer pageSize, String sort, Boolean descending);
 
-    Artist findById(Long id);
+    Optional<Artist> findById(Long id);
 
     Artist save(Artist artist);
 
