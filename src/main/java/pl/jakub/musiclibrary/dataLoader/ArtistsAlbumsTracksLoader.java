@@ -28,6 +28,8 @@ public class ArtistsAlbumsTracksLoader implements ApplicationListener<ContextRef
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
+        if (!artistService.findAll().isEmpty() || !albumService.findAll().isEmpty() || !trackService.findAll().isEmpty()) return;
+
         // creating artists
         Artist artist1 = createArtist("Kendrick Lamar", "United States", LocalDate.of(1987, 6, 17), null);
         Artist artist2 = createArtist("Tame Impala", "Australia", LocalDate.of(1986, 1, 20), null);
