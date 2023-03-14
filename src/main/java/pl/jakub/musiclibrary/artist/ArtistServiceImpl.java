@@ -43,19 +43,13 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public Artist update(Long id, Artist updatedArtist) {
-        Optional<Artist> artistOptional = artistRepository.findById(id);
-
-        if (artistOptional.isPresent()) {
-            Artist artist = artistOptional.get();
-            artist.setName(updatedArtist.getName());
-            artist.setPlaceOfBirth(updatedArtist.getPlaceOfBirth());
-            artist.setDateOfBirth(updatedArtist.getDateOfBirth());
-            artist.setDateOfDeath(updatedArtist.getDateOfDeath());
-
-            artistRepository.save(artist);
-            return artist;
-        }
-            throw new RuntimeException();
+        Artist artist = artistRepository.findById(id).get();
+        artist.setName(updatedArtist.getName());
+        artist.setPlaceOfBirth(updatedArtist.getPlaceOfBirth());
+        artist.setDateOfBirth(updatedArtist.getDateOfBirth());
+        artist.setDateOfDeath(updatedArtist.getDateOfDeath());
+        artistRepository.save(artist);
+        return artist;
     }
 
     @Override
