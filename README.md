@@ -1,5 +1,4 @@
 # music-library-api
-[IN PROGRESS]
 
 REST API for a music library containing artists, albums, and tracks.
 
