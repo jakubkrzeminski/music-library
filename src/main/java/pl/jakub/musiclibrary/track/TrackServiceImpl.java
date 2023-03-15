@@ -32,8 +32,8 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public Track findById(Long id) {
-        return trackRepository.findById(id).orElseThrow(RuntimeException::new);
+    public Optional<Track> findById(Long id) {
+        return trackRepository.findById(id);
     }
 
     @Override
@@ -43,19 +43,13 @@ public class TrackServiceImpl implements TrackService{
 
     @Override
     public Track update(Long id, Track updatedTrack) {
-        Optional<Track> trackOptional = trackRepository.findById(id);
-
-        if (trackOptional.isPresent()) {
-            Track track = trackOptional.get();
-            track.setName(updatedTrack.getName());
-            track.setArtist(updatedTrack.getArtist());
-            track.setAlbum(updatedTrack.getAlbum());
-            track.setLength(updatedTrack.getLength());
-
-            trackRepository.save(track);
-            return track;
-        }
-        throw new RuntimeException();
+        Track track = trackRepository.findById(id).get();
+        track.setName(updatedTrack.getName());
+        track.setArtist(updatedTrack.getArtist());
+        track.setAlbum(updatedTrack.getAlbum());
+        track.setLength(updatedTrack.getLength());
+        trackRepository.save(track);
+        return track;
     }
 
     @Override

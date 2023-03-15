@@ -32,8 +32,8 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public Album findById(Long id) {
-        return albumRepository.findById(id).orElseThrow(RuntimeException::new);
+    public Optional<Album> findById(Long id) {
+        return albumRepository.findById(id);
     }
 
     @Override
@@ -43,18 +43,12 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public Album update(Long id, Album updatedArtist) {
-        Optional<Album> albumOptional = albumRepository.findById(id);
-
-        if (albumOptional.isPresent()) {
-            Album album = albumOptional.get();
-            album.setName(updatedArtist.getName());
-            album.setArtist(updatedArtist.getArtist());
-            album.setNumberOfSongs(updatedArtist.getNumberOfSongs());
-
-            albumRepository.save(album);
-            return album;
-        }
-        throw new RuntimeException();
+        Album album = albumRepository.findById(id).get();
+        album.setName(updatedArtist.getName());
+        album.setArtist(updatedArtist.getArtist());
+        album.setNumberOfSongs(updatedArtist.getNumberOfSongs());
+        albumRepository.save(album);
+        return album;
     }
 
     @Override

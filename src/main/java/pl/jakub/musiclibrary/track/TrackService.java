@@ -1,6 +1,7 @@
 package pl.jakub.musiclibrary.track;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TrackService {
 
@@ -8,7 +9,7 @@ public interface TrackService {
 
     List<Track> findSortedPage(Integer pageNumber, Integer pageSize, String sort, Boolean descending);
 
-    Track findById(Long id);
+    Optional<Track> findById(Long id);
 
     Track save(Track tracks);
 

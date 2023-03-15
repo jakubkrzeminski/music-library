@@ -1,6 +1,7 @@
 package pl.jakub.musiclibrary.album;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AlbumService {
 
@@ -8,7 +9,7 @@ public interface AlbumService {
 
     List<Album> findSortedPage(Integer pageNumber, Integer pageSize, String sort, Boolean descending);
 
-    Album findById(Long id);
+    Optional<Album> findById(Long id);
 
     Album save(Album album);
 
